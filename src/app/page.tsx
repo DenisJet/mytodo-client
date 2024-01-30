@@ -1,95 +1,66 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
+import styles from './page.module.css';
+import useSWR from 'swr';
+import { getAllTodos } from '@/services/todoServices';
 
-export default function Home() {
-  return (
+export default function Home(): JSX.Element {
+  const { data: todos, isLoading } = useSWR('todos', getAllTodos);
+
+  const awaitsTodos = todos?.filter((todo: ITodo) => todo.state == 'awaits');
+  const inProcessTodos = todos?.filter((todo: ITodo) => todo.state == 'in procces');
+  const doneTodos = todos?.filter((todo: ITodo) => todo.state == 'done');
+
+  return isLoading ? (
+    <h2>Loading...</h2>
+  ) : (
     <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+      <h1 className={styles.mainTitle}>My ToDo List</h1>
+      <button className={styles.addButton}>Add ToDo</button>
+      <div className={styles.table}>
+        <div className={styles.listContainer}>
+          <h2 className={styles.listTitle}>awaits</h2>
+          <ul className={styles.list}>
+            {awaitsTodos &&
+              awaitsTodos.map((todo: ITodo) => (
+                <li className={styles.listItem} key={todo._id}>
+                  <h3>{todo.title}</h3>
+                  <p>{todo.description}</p>
+                </li>
+              ))}
+          </ul>
         </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+        <div className={styles.listContainer}>
+          <h2 className={styles.listTitle}>in progress</h2>
+          <ul className={styles.list}>
+            {inProcessTodos &&
+              inProcessTodos.map((todo: ITodo) => (
+                <li className={styles.listItem} key={todo._id}>
+                  <h3>{todo.title}</h3>
+                  <p>{todo.description}</p>
+                </li>
+              ))}
+          </ul>
+        </div>
+        <div className={styles.listContainer}>
+          <h2 className={styles.listTitle}>done</h2>
+          <ul className={styles.list}>
+            {doneTodos &&
+              doneTodos.map((todo: ITodo) => (
+                <li className={styles.listItem} key={todo._id}>
+                  <h3>{todo.title}</h3>
+                  <p>{todo.description}</p>
+                </li>
+              ))}
+          </ul>
+        </div>
       </div>
     </main>
   );
+}
+
+interface ITodo {
+  _id: string;
+  title: string;
+  description: string;
+  state: string;
 }
