@@ -9,22 +9,19 @@
   margin-bottom: 20px;
 }
 
-.addButton {
-  font-size: 14px;
-  text-transform: uppercase;
-  padding: 5px 10px;
-  cursor: pointer;
-}
-
 .table {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   border: 1px solid gray;
-  margin-top: 10px;
+  gap: 20px;
+  padding: 0 20px 20px 20px;
+  margin-top: 20px;
 }
 
-.listContainer {
-
+@media screen and (width <= 640px) {
+  .table {
+    grid-template-columns: 1fr;
+  }
 }
 
 .listTitle {
@@ -39,6 +36,6 @@
 }
 
 .listItem {
-  text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
+

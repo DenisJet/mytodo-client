@@ -1,0 +1,34 @@
+.todoCard {
+  display: relative;
+  padding: 10px;
+  border: 1px solid gray;
+  border-radius: 3px;
+}
+
+.todoCard h3 {
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+.todoCard p {
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 10px;
+}
+
+.deleteButton,
+.changeButton,
+.submitButton,
+.returnButton {
+  cursor: pointer;
+}
+
+.inputContainer {
+  display: flex;
+  margin-bottom: 5px;
+}
