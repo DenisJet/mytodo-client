@@ -2,7 +2,7 @@ version: '3'
 services:
   todo.client:
     image: ghcr.io/denisjet/mytodo-client/mytodo-client:latest
-    container_name: mytop-app
+    container_name: mytodo-client
     pull_policy: always
     restart: always
     ports:

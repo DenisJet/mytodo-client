@@ -1,5 +1,5 @@
 export async function getAllTodos() {
-  const res = await fetch('http://localhost:3001/server/get');
+  const res = await fetch(process.env.NEXT_PUBLIC_DOMAIN + '/server/get');
 
   if (!res.ok) {
     throw new Error('Failed to fetch data');
@@ -9,7 +9,7 @@ export async function getAllTodos() {
 }
 
 export async function addNewTodo(todo: TypeTodo) {
-  return await fetch('http://localhost:3001/server/create', {
+  return await fetch(process.env.NEXT_PUBLIC_DOMAIN + '/server/create', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json;charset=utf-8',
@@ -19,13 +19,13 @@ export async function addNewTodo(todo: TypeTodo) {
 }
 
 export async function deleteTodo(id: string) {
-  return await fetch(`http://localhost:3001/server/${id}`, {
+  return await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/server/${id}`, {
     method: 'DELETE',
   });
 }
 
 export async function updateTodo(todo: TypeTodo, id: string) {
-  return await fetch(`http://localhost:3001/server/${id}`, {
+  return await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/server/${id}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json;charset=utf-8',
