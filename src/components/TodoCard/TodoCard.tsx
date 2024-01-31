@@ -19,7 +19,6 @@ export const TodoCard = (todo: TodoCardProps): JSX.Element => {
       description: descriptionRef.current?.value,
       state: state,
     };
-    console.log(updatedTodo);
 
     updateTodo(updatedTodo, todo._id);
   };
