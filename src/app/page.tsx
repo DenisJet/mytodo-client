@@ -15,7 +15,7 @@ export default function Home(): JSX.Element {
   const doneTodos = todos?.filter((todo: TodoCardProps) => todo.state == 'done').reverse();
 
   return isLoading ? (
-    <h2>Loading...</h2>
+    <h2>Loading....</h2>
   ) : (
     <>
       <main className={styles.main}>
