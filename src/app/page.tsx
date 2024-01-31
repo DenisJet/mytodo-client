@@ -3,7 +3,6 @@ import styles from './page.module.css';
 import useSWR from 'swr';
 import { getAllTodos } from '@/services/todoServices';
 import { NewTodoForm, TodoCard, TodoCardProps } from '@/components';
-import { useState } from 'react';
 
 export default function Home(): JSX.Element {
   const { data: todos, isLoading } = useSWR('todos', getAllTodos);

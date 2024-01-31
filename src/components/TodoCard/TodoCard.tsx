@@ -4,7 +4,7 @@ import { deleteTodo, updateTodo } from '@/services/todoServices';
 
 export const TodoCard = (todo: TodoCardProps): JSX.Element => {
   const [activeTodo, setActiveTodo] = useState<boolean>(false);
-  const [state, setState] = useState<string>('awaits');
+  const [state, setState] = useState<string>(todo.state);
 
   const titleRef = useRef<HTMLInputElement>(null);
   const descriptionRef = useRef<HTMLTextAreaElement>(null);
