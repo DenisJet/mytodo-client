@@ -57,6 +57,7 @@ export const TodoCard = (todo: TodoCardProps): JSX.Element => {
         <div className={styles.inputContainer}>
           <div>
             <input
+              className={styles.radioInput}
               type='radio'
               id={'awaits' + todo._id}
               name='state'
@@ -64,10 +65,13 @@ export const TodoCard = (todo: TodoCardProps): JSX.Element => {
               onChange={radioHandler}
               defaultChecked={todo.state === 'awaits'}
             />
-            <label htmlFor={'awaits' + todo._id}>awaits</label>
+            <label className={styles.label} htmlFor={'awaits' + todo._id}>
+              awaits
+            </label>
           </div>
           <div>
             <input
+              className={styles.radioInput}
               type='radio'
               id={'in progress' + todo._id}
               name='state'
@@ -75,10 +79,13 @@ export const TodoCard = (todo: TodoCardProps): JSX.Element => {
               onChange={radioHandler}
               defaultChecked={todo.state === 'in progress'}
             />
-            <label htmlFor={'in progress' + todo._id}>in progress</label>
+            <label className={styles.label} htmlFor={'in progress' + todo._id}>
+              in progress
+            </label>
           </div>
           <div>
             <input
+              className={styles.radioInput}
               type='radio'
               id={'done' + todo._id}
               name='state'
@@ -86,7 +93,9 @@ export const TodoCard = (todo: TodoCardProps): JSX.Element => {
               onChange={radioHandler}
               defaultChecked={todo.state === 'done'}
             />
-            <label htmlFor={'done' + todo._id}>done</label>
+            <label className={styles.label} htmlFor={'done' + todo._id}>
+              done
+            </label>
           </div>
         </div>
         <div className={styles.buttons}>

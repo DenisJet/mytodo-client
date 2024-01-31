@@ -38,12 +38,40 @@ export const NewTodoForm = (): JSX.Element => {
           />
         </div>
         <div className={styles.inputContainer}>
-          <input type='radio' id='awaits' name='state' value='awaits' onChange={radioHandler} defaultChecked />
-          <label htmlFor='awaits'>awaits</label>
-          <input type='radio' id='in progress' name='state' value='in progress' onChange={radioHandler} />
-          <label htmlFor='in progress'>in progress</label>
-          <input type='radio' id='done' name='state' value='done' onChange={radioHandler} />
-          <label htmlFor='done'>done</label>
+          <input
+            className={styles.radioInput}
+            type='radio'
+            id='awaits'
+            name='state'
+            value='awaits'
+            onChange={radioHandler}
+            defaultChecked
+          />
+          <label className={styles.label} htmlFor='awaits'>
+            awaits
+          </label>
+          <input
+            className={styles.radioInput}
+            type='radio'
+            id='in progress'
+            name='state'
+            value='in progress'
+            onChange={radioHandler}
+          />
+          <label className={styles.label} htmlFor='in progress'>
+            in progress
+          </label>
+          <input
+            className={styles.radioInput}
+            type='radio'
+            id='done'
+            name='state'
+            value='done'
+            onChange={radioHandler}
+          />
+          <label className={styles.label} htmlFor='done'>
+            done
+          </label>
         </div>
         <button type='submit' className={styles.submitButton}>
           add todo
