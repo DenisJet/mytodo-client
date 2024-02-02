@@ -1,6 +1,9 @@
 
+
 .fieldset {
   max-width: 400px;
+  background: var(--white);
+  box-shadow: 5px 5px 10px var(--black);
 }
 
 .inputContainer {

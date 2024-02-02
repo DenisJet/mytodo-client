@@ -45,12 +45,11 @@ export const TodoCard = (todo: TodoCardProps): JSX.Element => {
         </div>
         <div className={styles.inputContainer}>
           <textarea
-            className={styles.inputText}
+            className={styles.textarea}
             ref={descriptionRef}
             placeholder='описание задачи'
-            rows={4}
-            cols={25}
             defaultValue={todo.description}
+            rows={4}
           />
         </div>
         <div className={styles.inputContainer}>
