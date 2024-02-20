@@ -18,8 +18,9 @@ export default function Home(): JSX.Element {
   ) : (
     <>
       <main className={styles.main}>
-        <h1 className={styles.mainTitle}>My ToDo List</h1>
-        <NewTodoForm />
+        <div className={styles.titleContainer}>
+          <h1 className={styles.mainTitle}>My ToDo App</h1>
+        </div>
         <div className={styles.table}>
           <div className={styles.listContainer}>
             <h2 className={styles.listTitle}>awaits</h2>
