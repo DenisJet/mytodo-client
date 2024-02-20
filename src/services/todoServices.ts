@@ -35,7 +35,7 @@ export async function updateTodo(todo: TypeTodo, id: string) {
 }
 
 type TypeTodo = {
-  title: string | undefined;
-  description: string | undefined;
-  state: string | undefined;
+  title: string;
+  description: string;
+  isDone: boolean;
 };
