@@ -107,15 +107,20 @@ export const TodoCard = (todo: TodoCardProps): JSX.Element => {
       </fieldset>
     </form>
   ) : (
-    <div className={styles.todoCard}>
-      <h3>{todo.title}</h3>
-      <p>{todo.description}</p>
-      <div className={styles.buttons}>
-        <button className={styles.deleteButton} title='Delete' onClick={deleteHandler}>
-          &#10060;
+    <div className={styles.card}>
+      <div>
+        <p className={styles.cardTitle}>{todo.title}</p>
+        <p className={styles.cardText}>{todo.description}</p>
+      </div>
+      <div className={styles.cardButtons}>
+        <button className={styles.cardButton} type='button'>
+          <img className={styles.cardIcon} src='icons/Pencil.svg' width='25px' height='25px' alt='icon edit' />
         </button>
-        <button className={styles.changeButton} title='Change' onClick={changeHandler}>
-          &#128221;
+        <button className={styles.cardButton} type='button'>
+          <img className={styles.cardIcon} src='icons/Trash.svg' width='25px' height='25px' alt='icon remove' />
+        </button>
+        <button className={styles.cardButton} type='button'>
+          <img className={styles.cardIcon} src='icons/CheckCircle.svg' width='25px' height='25px' alt='icon done' />
         </button>
       </div>
     </div>
