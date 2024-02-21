@@ -2,10 +2,12 @@
 import styles from './page.module.css';
 import useSWR from 'swr';
 import { getAllTodos } from '@/services/todoServices';
-import { NewTodoForm, TodoCard, TodoCardProps } from '@/components';
+import { TodoCard, TodoCardProps } from '@/components';
+import { useRouter } from 'next/navigation';
 
 export default function Home(): JSX.Element {
   const { data: todos, isLoading } = useSWR('todos', getAllTodos);
+  const router = useRouter();
 
   const inProgressTodos = todos
     ?.filter((todo: TodoCardProps) => todo.isDone == false || todo.isDone == undefined)
@@ -28,7 +30,7 @@ export default function Home(): JSX.Element {
               </li>
             ))}
         </ul>
-        <button type='button' className={styles.addButton}>
+        <button type='button' className={styles.addButton} onClick={() => router.push('/addtask')}>
           +
         </button>
       </main>

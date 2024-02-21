@@ -1,2 +1,2 @@
-export * from './NewTodoForm/NewTodoForm';
+export * from './TodoForm/TodoForm';
 export * from './TodoCard/TodoCard';

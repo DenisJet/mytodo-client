@@ -19,7 +19,6 @@
 }
 
 .main {
-  position: relative;
   flex: 1 1 auto;
   width: 100%;
   max-width: 1200px;
@@ -53,8 +52,8 @@
   color: white;
   font-size: 30px;
   background-color: var(--primary);
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   border: none;
   border-radius: 50%;
   box-shadow: 0 4px 4px 0 var(--gray);
