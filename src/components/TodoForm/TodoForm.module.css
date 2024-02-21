@@ -1,17 +1,37 @@
-
-.inputContainer {
-  margin-bottom: 10px;
+.todoForm {
+  max-width: 500px;
+  margin: auto;
 }
 
-.inputText {
-  font-size: 14px;
-  padding: 5px;
+.input {
+  width: 100%;
+  font-size: 16px;
+  padding: 6px;
+  margin-bottom: 45px;
+  border: none;
+  border-bottom: 1px solid var(--gray)
 }
 
 .submitButton {
   display: block;
   padding: 3px 30px;
+  color: var(--white);
+  font-weight: 600;
+  font-size: 20px;
   text-transform: uppercase;
+  background-color: var(--primary);
+  border: none;
+  border-radius: 16px;
+  width: 100%;
+  padding: 20px;
   margin: auto;
   cursor: pointer;
+}
+
+.submitButton:hover {
+  opacity: 0.6;
+}
+
+.submitButton:active {
+  opacity: 1;
 }

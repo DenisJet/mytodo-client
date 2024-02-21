@@ -2,12 +2,16 @@ import { useRef } from 'react';
 import styles from './TodoForm.module.css';
 import { addNewTodo } from '@/services/todoServices';
 import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 export const TodoForm = (): JSX.Element => {
-  const titleRef = useRef<HTMLInputElement>(null);
-  const descriptionRef = useRef<HTMLTextAreaElement>(null);
+  const router = useRouter();
 
-  const handleSubmit = () => {
+  const titleRef = useRef<HTMLInputElement>(null);
+  const descriptionRef = useRef<HTMLInputElement>(null);
+
+  const handleSubmit = (evt: { preventDefault: () => void }) => {
+    evt.preventDefault();
     const newTodo = {
       title: titleRef.current?.value,
       description: descriptionRef.current?.value,
@@ -15,17 +19,13 @@ export const TodoForm = (): JSX.Element => {
     };
 
     addNewTodo(newTodo);
-    redirect('/');
+    router.push('/');
   };
 
   return (
     <form onSubmit={handleSubmit} className={styles.todoForm}>
-      <div className={styles.inputContainer}>
-        <input className={styles.input} type='text' ref={titleRef} placeholder='название задачи' required />
-      </div>
-      <div className={styles.inputContainer}>
-        <textarea className={styles.input} ref={descriptionRef} placeholder='описание задачи' rows={2} cols={25} />
-      </div>
+      <input className={styles.input} type='text' ref={titleRef} placeholder='Title' required />
+      <input className={styles.input} ref={descriptionRef} placeholder='Details' />
       <button type='submit' className={styles.submitButton}>
         add todo
       </button>
