@@ -5,7 +5,7 @@
   padding: 20px;
   border-radius: 10px;
   background: var(--white);
-  box-shadow: 0 4px 4px 0 var(--black);
+  box-shadow: 0 4px 4px 0 var(--gray);
 }
 
 .cardTitle {
@@ -31,4 +31,12 @@
 
 .cardButton:not(:last-child) {
   margin-right: 20px;
+}
+
+.cardButton:hover {
+  opacity: 0.6;
+}
+
+.cardButton:active {
+  opacity: 1;
 }

@@ -1,33 +1,101 @@
-.main {
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
   background-color: var(--secondary);
-  min-height: 100vh;
-  max-width: 1200px;
-  margin: auto;
 }
 
-.titleContainer {
+.header {
   background-color: var(--primary);
 }
-.listContainer {
-  
-}
 
-.mainTitle {
+.title {
   color: var(--white);
   text-transform: uppercase;
   font-weight: 600;
   font-size: 24px;
   padding: 25px 20px;
-  margin: 0 0 20px 0;
+  margin: 0;
+}
+
+.main {
+  position: relative;
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px 10px;
+  margin: auto;
 }
 
 .list {
-  padding: 0 10px;
+  padding: 0;
   margin: 0;
   list-style-type: none;
+
+  @media (min-width: 700px) {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 20px;
+  }
 }
 
 .listItem {
+  margin: auto;
   margin-bottom: 20px;
+  min-width: 300px;
+  max-width: 380px;
+}
+
+.addButton {
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  color: white;
+  font-size: 30px;
+  background-color: var(--primary);
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 4px 4px 0 var(--gray);
+  cursor: pointer;
+}
+
+.footerWrapper {
+  display: flex;
+  justify-content: space-around;
+  max-width: 400px;
+  margin: auto;
+}
+
+.footer {
+  padding: 10px;
+  background-color: var(--white);
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.footerButton {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.footerButton:hover {
+  opacity: 0.6;
+}
+
+.footerButton:active {
+  opacity: 1;
+}
+
+.footerText {
+  color: var(--primary);
+  text-align: center;
+  font-size: 10px;
+  margin: 0;
 }
 

@@ -7,31 +7,47 @@ import { NewTodoForm, TodoCard, TodoCardProps } from '@/components';
 export default function Home(): JSX.Element {
   const { data: todos, isLoading } = useSWR('todos', getAllTodos);
 
-  const awaitsTodos = todos
-    ?.filter((todo: TodoCardProps) => todo.state == 'awaits' || todo.state == undefined)
+  const inProgressTodos = todos
+    ?.filter((todo: TodoCardProps) => todo.isDone == false || todo.isDone == undefined)
     .reverse();
-  const inProcessTodos = todos?.filter((todo: TodoCardProps) => todo.state == 'in progress').reverse();
-  const doneTodos = todos?.filter((todo: TodoCardProps) => todo.state == 'done').reverse();
+  const doneTodos = todos?.filter((todo: TodoCardProps) => todo.isDone == true).reverse();
 
   return isLoading ? (
     <h2>Loading....</h2>
   ) : (
-    <>
+    <div className={styles.wrapper}>
+      <header className={styles.header}>
+        <h1 className={styles.title}>My ToDo App</h1>
+      </header>
       <main className={styles.main}>
-        <div className={styles.titleContainer}>
-          <h1 className={styles.mainTitle}>My ToDo App</h1>
-        </div>
-        <div className={styles.listContainer}>
-          <ul className={styles.list}>
-            {awaitsTodos &&
-              awaitsTodos.map((todo: TodoCardProps) => (
-                <li className={styles.listItem} key={todo._id}>
-                  <TodoCard title={todo.title} description={todo.description} state={todo.state} _id={todo._id} />
-                </li>
-              ))}
-          </ul>
-        </div>
+        <ul className={styles.list}>
+          {inProgressTodos &&
+            inProgressTodos.map((todo: TodoCardProps) => (
+              <li className={styles.listItem} key={todo._id}>
+                <TodoCard title={todo.title} description={todo.description} isDone={todo.isDone} _id={todo._id} />
+              </li>
+            ))}
+        </ul>
+        <button type='button' className={styles.addButton}>
+          +
+        </button>
       </main>
-    </>
+      <footer className={styles.footer}>
+        <div className={styles.footerWrapper}>
+          <div className={styles.buttonContainer}>
+            <button className={styles.footerButton}>
+              <img src='/icons/Playlist.svg' alt='' width='30px' height='30px' />
+            </button>
+            <p className={styles.footerText}>All</p>
+          </div>
+          <div className={styles.buttonContainer}>
+            <button className={styles.footerButton}>
+              <img src='/icons/Tick.svg' alt='' width='30px' height='30px' />
+            </button>
+            <p className={styles.footerText}>Completed</p>
+          </div>
+        </div>
+      </footer>
+    </div>
   );
 }

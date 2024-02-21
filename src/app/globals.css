@@ -1,10 +1,19 @@
+:root {
+	--primary: #9395D3;
+	--secondary: #B3B7EE50;
+  --black: #3B434E;
+	--gray: #8B8787;
+	--white: white;
+}
+
 html,
 body {
+	height: 100%;
 	margin: 0;
 	padding: 0;
 
 	color: var(--black);
-	background-color: #fafafa;
+	background-color: var(--white);
 }
 
 a {
@@ -24,11 +33,4 @@ a {
 
 	width: 0;
 	height: 0;
-}
-
-:root {
-	--primary: #9395D3;
-	--secondary: #B3B7EE50;
-  --black: #3B434E;
-	--white: white;
 }
