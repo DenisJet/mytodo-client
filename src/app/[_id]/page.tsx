@@ -11,8 +11,6 @@ export default function EditTask({ params }: { params: { _id: string } }): JSX.E
   const router = useRouter();
   const titleRef = useRef<HTMLInputElement>(null);
   const descriptionRef = useRef<HTMLInputElement>(null);
-  console.log(params._id);
-  console.log(todo);
 
   const handleSubmit = (evt: { preventDefault: () => void }) => {
     evt.preventDefault();
@@ -45,9 +43,14 @@ export default function EditTask({ params }: { params: { _id: string } }): JSX.E
             required
           />
           <input className={styles.input} ref={descriptionRef} placeholder='Details' defaultValue={todo?.description} />
-          <button type='submit' className={styles.submitButton}>
-            add todo
-          </button>
+          <div className={styles.buttonContainer}>
+            <button type='submit' className={styles.button}>
+              Update
+            </button>
+            <button type='button' className={styles.button} onClick={() => router.push('/')}>
+              Cancel
+            </button>
+          </div>
         </form>
       </main>
     </>

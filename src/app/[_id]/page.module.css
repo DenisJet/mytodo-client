@@ -28,3 +28,45 @@
   padding: 20px 10px;
   margin: auto;
 }
+
+.todoForm {
+  max-width: 500px;
+  margin: auto;
+}
+
+.input {
+  width: 100%;
+  font-size: 16px;
+  padding: 6px;
+  margin-bottom: 45px;
+  border: none;
+  border-bottom: 1px solid var(--gray)
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 45px;
+}
+
+.button {
+  display: block;
+  padding: 3px 30px;
+  color: var(--white);
+  font-weight: 400;
+  font-size: 15px;
+  background-color: var(--primary);
+  border: none;
+  border-radius: 16px;
+  width: 100%;
+  padding: 20px;
+  margin: auto;
+  cursor: pointer;
+}
+
+.button:hover {
+  opacity: 0.6;
+}
+
+.button:active {
+  opacity: 1;
+}
