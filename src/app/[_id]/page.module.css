@@ -1,0 +1,30 @@
+.header {
+  background-color: var(--primary);
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  color: var(--white);
+  font-weight: 600;
+  font-size: 24px;
+  padding: 25px 20px;
+  margin: 0;
+}
+
+.headerButton {
+  color: var(--white);
+  font-size: 24px;
+  font-weight: 600;
+  background-color: transparent;
+  margin-left: 20px;
+  cursor: pointer;
+  border: none;
+  padding: 0 10px;
+}
+
+.main {
+  max-width: 1200px;
+  padding: 20px 10px;
+  margin: auto;
+}

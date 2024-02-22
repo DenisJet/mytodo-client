@@ -3,8 +3,9 @@ import styles from './TodoForm.module.css';
 import { addNewTodo } from '@/services/todoServices';
 import { redirect } from 'next/navigation';
 import { useRouter } from 'next/navigation';
+import { TodoCardProps } from '../TodoCard/TodoCard';
 
-export const TodoForm = (): JSX.Element => {
+export const TodoForm = (todo: TodoCardProps): JSX.Element => {
   const router = useRouter();
 
   const titleRef = useRef<HTMLInputElement>(null);

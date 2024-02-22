@@ -8,6 +8,16 @@ export async function getAllTodos() {
   return res.json();
 }
 
+export async function getById(id: string) {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/server/${id}`);
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
+
+  return res.json();
+}
+
 export async function addNewTodo(todo: TypeTodo) {
   return await fetch(process.env.NEXT_PUBLIC_DOMAIN + '/server/create', {
     method: 'POST',

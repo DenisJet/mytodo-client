@@ -1,9 +1,11 @@
 import { DetailedHTMLProps, HTMLAttributes, useState } from 'react';
 import styles from './TodoCard.module.css';
 import { deleteTodo, updateTodo } from '@/services/todoServices';
+import { useRouter } from 'next/navigation';
 
 export const TodoCard = (todo: TodoCardProps): JSX.Element => {
   const [activeTodo, setActiveTodo] = useState<boolean>(false);
+  const router = useRouter();
 
   const handleUpdate = () => {
     const updatedTodo = {
@@ -20,6 +22,10 @@ export const TodoCard = (todo: TodoCardProps): JSX.Element => {
     window.location.reload();
   };
 
+  const handleEdit = () => {
+    router.push(`/${todo._id}`);
+  };
+
   return (
     <div className={styles.card}>
       <div>
@@ -28,7 +34,7 @@ export const TodoCard = (todo: TodoCardProps): JSX.Element => {
       </div>
       <div className={styles.cardButtons}>
         {!todo.isDone && (
-          <button className={styles.cardButton} type='button' title='edit'>
+          <button className={styles.cardButton} type='button' title='edit' onClick={() => handleEdit()}>
             <img className={styles.cardIcon} src='icons/Pencil.svg' width='25px' height='25px' alt='icon edit' />
           </button>
         )}
