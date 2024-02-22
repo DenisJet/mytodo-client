@@ -2,8 +2,9 @@
 import styles from './page.module.css';
 import useSWR from 'swr';
 import { getAllTodos } from '@/services/todoServices';
-import { TodoCard, TodoCardProps } from '@/components';
+import { Footer, TodoCard, TodoCardProps } from '@/components';
 import { useRouter } from 'next/navigation';
+import { AddButton } from '@/components/AddButton/AddButton';
 
 export default function Home(): JSX.Element {
   const { data: todos, error, isLoading } = useSWR('todos', getAllTodos);
@@ -30,26 +31,9 @@ export default function Home(): JSX.Element {
               </li>
             ))}
         </ul>
-        <button type='button' className={styles.addButton} onClick={() => router.push('/addtask')}>
-          +
-        </button>
+        <AddButton />
       </main>
-      <footer className={styles.footer}>
-        <div className={styles.footerWrapper}>
-          <div className={styles.buttonContainer} onClick={() => router.push('/')}>
-            <button className={styles.footerButton}>
-              <img src='/icons/Playlist.svg' alt='' width='30px' height='30px' />
-            </button>
-            <p className={styles.footerText}>All</p>
-          </div>
-          <div className={styles.buttonContainer} onClick={() => router.push('/completed')}>
-            <button className={styles.footerButton}>
-              <img src='/icons/Tick.svg' alt='' width='30px' height='30px' />
-            </button>
-            <p className={styles.footerText}>Completed</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

@@ -3,18 +3,20 @@ import styles from './page.module.css';
 import { useRouter } from 'next/navigation';
 import useSWR from 'swr';
 import { getAllTodos } from '@/services/todoServices';
-import { TodoCard, TodoCardProps } from '@/components';
+import { Footer, TodoCard, TodoCardProps } from '@/components';
+import { AddButton } from '@/components/AddButton/AddButton';
 
 export default function CompletedTask(): JSX.Element {
-  const { data: todos, isLoading } = useSWR('todos', getAllTodos);
+  const { data: todos, error, isLoading } = useSWR('todos', getAllTodos);
   const router = useRouter();
 
   const doneTodos = todos?.filter((todo: TodoCardProps) => todo.isDone == true).reverse();
 
-  return isLoading ? (
-    <h2>Loading....</h2>
-  ) : (
-    <>
+  if (error) return <h2>Error</h2>;
+  if (isLoading) return <h2>Loading...</h2>;
+
+  return (
+    <div className={styles.wrapper}>
       <header className={styles.header}>
         <button type='button' className={styles.headerButton} onClick={() => router.push('/')}>
           &lArr;
@@ -30,7 +32,9 @@ export default function CompletedTask(): JSX.Element {
               </li>
             ))}
         </ul>
+        <AddButton />
       </main>
-    </>
+      <Footer />
+    </div>
   );
 }

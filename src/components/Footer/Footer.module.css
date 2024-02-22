@@ -1,0 +1,38 @@
+.footerWrapper {
+  display: flex;
+  justify-content: space-around;
+  max-width: 400px;
+  margin: auto;
+}
+
+.footer {
+  padding: 10px;
+  background-color: var(--white);
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.footerButton {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.footerButton:hover {
+  opacity: 0.6;
+}
+
+.footerButton:active {
+  opacity: 1;
+}
+
+.footerText {
+  color: var(--primary);
+  text-align: center;
+  font-size: 10px;
+  margin: 0;
+}
