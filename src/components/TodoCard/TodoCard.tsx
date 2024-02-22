@@ -15,6 +15,7 @@ export const TodoCard = (todo: TodoCardProps): JSX.Element => {
     };
 
     updateTodo(updatedTodo, todo._id);
+    window.location.reload();
   };
 
   const handleDelete = () => {
@@ -54,6 +55,6 @@ export const TodoCard = (todo: TodoCardProps): JSX.Element => {
 export interface TodoCardProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   _id: string;
   title: string;
-  description: string;
+  description?: string;
   isDone: boolean;
 }

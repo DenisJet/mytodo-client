@@ -15,7 +15,7 @@ export default function AddTask(): JSX.Element {
         <h1 className={styles.title}>Add Task</h1>
       </header>
       <main className={styles.main}>
-        <TodoForm />
+        <TodoForm _id={''} title={''} description={''} />
       </main>
     </>
   );

@@ -7,22 +7,11 @@ import useSWR from 'swr';
 import { useRef } from 'react';
 
 export default function EditTask({ params }: { params: { _id: string } }): JSX.Element {
-  const { data: todo, isLoading } = useSWR(`${params._id}`, getById);
+  const { data: todo, error, isLoading } = useSWR(`${params._id}`, getById);
   const router = useRouter();
-  const titleRef = useRef<HTMLInputElement>(null);
-  const descriptionRef = useRef<HTMLInputElement>(null);
 
-  const handleSubmit = (evt: { preventDefault: () => void }) => {
-    evt.preventDefault();
-    const newTodo = {
-      title: titleRef.current?.value,
-      description: descriptionRef.current?.value,
-      isDone: false,
-    };
-
-    updateTodo(newTodo, todo._id);
-    router.push('/');
-  };
+  if (error) return <h2>Error</h2>;
+  if (isLoading) return <h2>Loading...</h2>;
 
   return (
     <>
@@ -33,25 +22,7 @@ export default function EditTask({ params }: { params: { _id: string } }): JSX.E
         <h1 className={styles.title}>Edit Task</h1>
       </header>
       <main className={styles.main}>
-        <form onSubmit={handleSubmit} className={styles.todoForm}>
-          <input
-            className={styles.input}
-            type='text'
-            ref={titleRef}
-            placeholder='Title'
-            defaultValue={todo?.title}
-            required
-          />
-          <input className={styles.input} ref={descriptionRef} placeholder='Details' defaultValue={todo?.description} />
-          <div className={styles.buttonContainer}>
-            <button type='submit' className={styles.button}>
-              Update
-            </button>
-            <button type='button' className={styles.button} onClick={() => router.push('/')}>
-              Cancel
-            </button>
-          </div>
-        </form>
+        <TodoForm _id={todo._id} title={todo.title} description={todo.description} />
       </main>
     </>
   );
