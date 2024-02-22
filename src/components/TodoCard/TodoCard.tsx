@@ -27,15 +27,19 @@ export const TodoCard = (todo: TodoCardProps): JSX.Element => {
         <p className={styles.cardText}>{todo.description}</p>
       </div>
       <div className={styles.cardButtons}>
-        <button className={styles.cardButton} type='button'>
-          <img className={styles.cardIcon} src='icons/Pencil.svg' width='25px' height='25px' alt='icon edit' />
-        </button>
-        <button className={styles.cardButton} type='button' onClick={() => handleDelete()}>
+        {!todo.isDone && (
+          <button className={styles.cardButton} type='button' title='edit'>
+            <img className={styles.cardIcon} src='icons/Pencil.svg' width='25px' height='25px' alt='icon edit' />
+          </button>
+        )}
+        <button className={styles.cardButton} type='button' onClick={() => handleDelete()} title='remove'>
           <img className={styles.cardIcon} src='icons/Trash.svg' width='25px' height='25px' alt='icon remove' />
         </button>
-        <button className={styles.cardButton} type='button' onClick={() => handleUpdate()}>
-          <img className={styles.cardIcon} src='icons/CheckCircle.svg' width='25px' height='25px' alt='icon done' />
-        </button>
+        {!todo.isDone && (
+          <button className={styles.cardButton} type='button' onClick={() => handleUpdate()} title='complete'>
+            <img className={styles.cardIcon} src='icons/CheckCircle.svg' width='25px' height='25px' alt='icon done' />
+          </button>
+        )}
       </div>
     </div>
   );
