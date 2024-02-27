@@ -14,6 +14,10 @@ export default function Home(): JSX.Element {
     ?.filter((todo: TodoCardProps) => todo.isDone == false || todo.isDone == undefined)
     .reverse();
 
+  const newDate = new Date();
+  const date = `${newDate.toLocaleString('en', { month: 'short' })}, ${newDate.getDate()}`;
+  console.log(date);
+
   if (error) return <h2>Error</h2>;
   if (isLoading) return <h2>Loading...</h2>;
 
@@ -21,6 +25,7 @@ export default function Home(): JSX.Element {
     <div className={styles.wrapper}>
       <header className={styles.header}>
         <h1 className={styles.title}>My ToDo App</h1>
+        <p className={styles.date}>{date}</p>
       </header>
       <main className={styles.main}>
         <ul className={styles.list}>
